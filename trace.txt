@@ -1,0 +1,101 @@
+--- timeline (ms since first event) ---
+     0 server.listening     {"port":4100,"saveCommitDelayMs":300}
+    41 reset                {}
+    62 draft.received       {"reqId":"6ace8230-92bf-42f6-b92d-f9b633650702","content":"draft A","currentDraft":""}
+   362 draft.committed      {"reqId":"6ace8230-92bf-42f6-b92d-f9b633650702","content":"draft A","before":"","after":"draft A"}
+   368 draft.received       {"reqId":"dda6785f-7e27-42a8-b61a-8c5fa99dda4c","content":"draft B #0","currentDraft":"draft A"}
+   377 publish.received     {"reqId":"1424cb37-d523-4057-b527-2614301f9410","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+   669 draft.committed      {"reqId":"dda6785f-7e27-42a8-b61a-8c5fa99dda4c","content":"draft B #0","before":"draft A","after":"draft B #0"}
+   670 publish.waitedForDrafts {"reqId":"1424cb37-d523-4057-b527-2614301f9410","currentDraftSnapshot":"draft B #0"}
+   670 publish.completed    {"reqId":"1424cb37-d523-4057-b527-2614301f9410","published":"draft B #0"}
+   674 reset                {}
+   677 draft.received       {"reqId":"77160f35-0471-490e-b89e-b0bb080e4bfb","content":"draft A","currentDraft":""}
+   977 draft.committed      {"reqId":"77160f35-0471-490e-b89e-b0bb080e4bfb","content":"draft A","before":"","after":"draft A"}
+   982 draft.received       {"reqId":"341f6b13-d556-4c06-b8d8-9199d621e316","content":"draft B #1","currentDraft":"draft A"}
+   992 publish.received     {"reqId":"b084be34-b007-49d5-a082-5951d89fd8e5","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+  1282 draft.committed      {"reqId":"341f6b13-d556-4c06-b8d8-9199d621e316","content":"draft B #1","before":"draft A","after":"draft B #1"}
+  1283 publish.waitedForDrafts {"reqId":"b084be34-b007-49d5-a082-5951d89fd8e5","currentDraftSnapshot":"draft B #1"}
+  1283 publish.completed    {"reqId":"b084be34-b007-49d5-a082-5951d89fd8e5","published":"draft B #1"}
+  1287 reset                {}
+  1292 draft.received       {"reqId":"ccad5d92-07d8-432e-97bf-5b0be8719e68","content":"draft A","currentDraft":""}
+  1592 draft.committed      {"reqId":"ccad5d92-07d8-432e-97bf-5b0be8719e68","content":"draft A","before":"","after":"draft A"}
+  1597 draft.received       {"reqId":"ad9388f3-5374-4ed8-8bdb-2f77e0a56753","content":"draft B #2","currentDraft":"draft A"}
+  1607 publish.received     {"reqId":"4af715f8-465e-47e0-9920-bb9b98b3ce10","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+  1897 draft.committed      {"reqId":"ad9388f3-5374-4ed8-8bdb-2f77e0a56753","content":"draft B #2","before":"draft A","after":"draft B #2"}
+  1898 publish.waitedForDrafts {"reqId":"4af715f8-465e-47e0-9920-bb9b98b3ce10","currentDraftSnapshot":"draft B #2"}
+  1898 publish.completed    {"reqId":"4af715f8-465e-47e0-9920-bb9b98b3ce10","published":"draft B #2"}
+  1902 reset                {}
+  1905 draft.received       {"reqId":"577cab57-178a-486f-a32c-bcccbf3594ae","content":"draft A","currentDraft":""}
+  2206 draft.committed      {"reqId":"577cab57-178a-486f-a32c-bcccbf3594ae","content":"draft A","before":"","after":"draft A"}
+  2210 draft.received       {"reqId":"9c59e4d4-7613-4392-b630-62cf52809fab","content":"draft B #3","currentDraft":"draft A"}
+  2219 publish.received     {"reqId":"c305c849-a2ac-4fa8-b21e-b0a62e551ac7","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+  2511 draft.committed      {"reqId":"9c59e4d4-7613-4392-b630-62cf52809fab","content":"draft B #3","before":"draft A","after":"draft B #3"}
+  2511 publish.waitedForDrafts {"reqId":"c305c849-a2ac-4fa8-b21e-b0a62e551ac7","currentDraftSnapshot":"draft B #3"}
+  2511 publish.completed    {"reqId":"c305c849-a2ac-4fa8-b21e-b0a62e551ac7","published":"draft B #3"}
+  2514 reset                {}
+  2518 draft.received       {"reqId":"eed2b327-3272-4d80-8ba2-6933c0697922","content":"draft A","currentDraft":""}
+  2818 draft.committed      {"reqId":"eed2b327-3272-4d80-8ba2-6933c0697922","content":"draft A","before":"","after":"draft A"}
+  2822 draft.received       {"reqId":"b6196a61-bf82-40f3-b675-9906141d203e","content":"draft B #4","currentDraft":"draft A"}
+  2833 publish.received     {"reqId":"199dee6b-5191-453d-87cb-0d09df68884c","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+  3122 draft.committed      {"reqId":"b6196a61-bf82-40f3-b675-9906141d203e","content":"draft B #4","before":"draft A","after":"draft B #4"}
+  3123 publish.waitedForDrafts {"reqId":"199dee6b-5191-453d-87cb-0d09df68884c","currentDraftSnapshot":"draft B #4"}
+  3123 publish.completed    {"reqId":"199dee6b-5191-453d-87cb-0d09df68884c","published":"draft B #4"}
+
+--- race verdict ---
+Observed 5 publish event(s) that arrived while a draft was still in flight.
+
+Protected interleavings: 5
+
+  publish reqId:           1424cb37-d523-4057-b527-2614301f9410
+  publish received at:     t+377ms
+  publish completed at:    t+670ms
+  currentDraft on receive: "draft A"
+  published value:         "draft B #0"
+  in-flight draft reqId:   dda6785f-7e27-42a8-b61a-8c5fa99dda4c
+    received at:           t+368ms
+    committed at:          t+669ms
+    content:               "draft B #0"
+
+  publish reqId:           b084be34-b007-49d5-a082-5951d89fd8e5
+  publish received at:     t+992ms
+  publish completed at:    t+1283ms
+  currentDraft on receive: "draft A"
+  published value:         "draft B #1"
+  in-flight draft reqId:   341f6b13-d556-4c06-b8d8-9199d621e316
+    received at:           t+982ms
+    committed at:          t+1282ms
+    content:               "draft B #1"
+
+  publish reqId:           4af715f8-465e-47e0-9920-bb9b98b3ce10
+  publish received at:     t+1607ms
+  publish completed at:    t+1898ms
+  currentDraft on receive: "draft A"
+  published value:         "draft B #2"
+  in-flight draft reqId:   ad9388f3-5374-4ed8-8bdb-2f77e0a56753
+    received at:           t+1597ms
+    committed at:          t+1897ms
+    content:               "draft B #2"
+
+  publish reqId:           c305c849-a2ac-4fa8-b21e-b0a62e551ac7
+  publish received at:     t+2219ms
+  publish completed at:    t+2511ms
+  currentDraft on receive: "draft A"
+  published value:         "draft B #3"
+  in-flight draft reqId:   9c59e4d4-7613-4392-b630-62cf52809fab
+    received at:           t+2210ms
+    committed at:          t+2511ms
+    content:               "draft B #3"
+
+  publish reqId:           199dee6b-5191-453d-87cb-0d09df68884c
+  publish received at:     t+2833ms
+  publish completed at:    t+3123ms
+  currentDraft on receive: "draft A"
+  published value:         "draft B #4"
+  in-flight draft reqId:   b6196a61-bf82-40f3-b675-9906141d203e
+    received at:           t+2822ms
+    committed at:          t+3122ms
+    content:               "draft B #4"
+
+Conclusion: no unsafe race remains. /publish may arrive while
+a draft is in flight, but it waits for that draft to commit before
+publishing, so it returns the latest saved content.
