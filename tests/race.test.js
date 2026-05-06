@@ -8,6 +8,7 @@
 //
 // You did not write this test — we did. Your job is to make your fix pass it.
 // See README.md for what the assignment asks of you.
+// test comment
 
 const test = require('node:test');
 const assert = require('node:assert');
