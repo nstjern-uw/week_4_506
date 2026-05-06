@@ -1,4 +1,5 @@
 # Week 4 Individual Assignment: Debug This With AII
+# Week 4 Individual Assignment: Debug This With AII
 
 This repo contains a small Node/Express app with a known race condition between save and publish. Your job is to **direct AI through the debugging loop** for it: instrument, prove the bug, fix it, get a fresh AI to review the fix, and ship it through PR-gated CI.
 
