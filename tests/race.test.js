@@ -67,3 +67,48 @@ test('publish reflects the saved value when no save is in flight', async () => {
 
   assert.strictEqual(publishResponse.body.published, 'committed draft');
 });
+
+test('/reset cancels in-flight draft commits so they cannot mutate state after reset', async () => {
+  const agent = supertest(app);
+
+  await agent.post('/reset').expect(200);
+
+  // Fire a save but do NOT await its response. The trailing .then(r => r)
+  // is required to trigger supertest to actually send the HTTP request now
+  // (supertest defers .end() until something attaches to the Test thenable).
+  // Its commit timer is set for SAVE_COMMIT_DELAY_MS (300ms in this test).
+  const draftPromise = agent
+    .post('/draft')
+    .send({ content: 'should-be-discarded' })
+    .then((r) => r);
+
+  // Yield briefly so /draft reaches the server handler (and arms its
+  // commit timer) before we send /reset.
+  await new Promise((r) => setTimeout(r, 50));
+
+  // Reset before that timer can fire. A correct /reset must clearTimeout
+  // the in-flight commit; otherwise the timer fires later and writes
+  // 'should-be-discarded' back into currentDraft, defeating the reset.
+  await agent.post('/reset').expect(200);
+
+  // The /draft request should now settle as canceled rather than committed.
+  const draftResponse = await draftPromise;
+  assert.strictEqual(
+    draftResponse.body.canceled,
+    true,
+    '/draft was not reported as canceled after /reset',
+  );
+
+  // Wait past the original commit deadline to confirm no late mutation.
+  await new Promise((r) => setTimeout(r, 400));
+
+  const currentResp = await agent.get('/current').expect(200);
+  assert.strictEqual(
+    currentResp.body.current,
+    '',
+    'reset did not actually cancel the in-flight draft commit',
+  );
+
+  const publishResp = await agent.post('/publish').expect(200);
+  assert.strictEqual(publishResp.body.published, '');
+});

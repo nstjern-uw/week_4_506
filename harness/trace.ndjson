@@ -1,0 +1,41 @@
+{"t_ms":25437013,"event":"server.listening","port":4100,"saveCommitDelayMs":300}
+{"t_ms":25437043,"event":"reset"}
+{"t_ms":25437066,"event":"draft.received","reqId":"b30d7d5d-7e6a-44fe-bee3-b1f1b874a3c0","content":"draft A","currentDraft":""}
+{"t_ms":25437367,"event":"draft.committed","reqId":"b30d7d5d-7e6a-44fe-bee3-b1f1b874a3c0","content":"draft A","before":"","after":"draft A"}
+{"t_ms":25437373,"event":"draft.received","reqId":"96c78753-ca16-4015-91fa-538ebad1f4ce","content":"draft B #0","currentDraft":"draft A"}
+{"t_ms":25437382,"event":"publish.received","reqId":"79873610-76e9-4657-b7d4-3a5f82c57fcb","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+{"t_ms":25437673,"event":"draft.committed","reqId":"96c78753-ca16-4015-91fa-538ebad1f4ce","content":"draft B #0","before":"draft A","after":"draft B #0"}
+{"t_ms":25437674,"event":"publish.waitedForDrafts","reqId":"79873610-76e9-4657-b7d4-3a5f82c57fcb","currentDraftSnapshot":"draft B #0"}
+{"t_ms":25437674,"event":"publish.completed","reqId":"79873610-76e9-4657-b7d4-3a5f82c57fcb","published":"draft B #0"}
+{"t_ms":25437678,"event":"reset"}
+{"t_ms":25437681,"event":"draft.received","reqId":"fe15902c-b2ab-46eb-a155-5a2287fc6699","content":"draft A","currentDraft":""}
+{"t_ms":25437981,"event":"draft.committed","reqId":"fe15902c-b2ab-46eb-a155-5a2287fc6699","content":"draft A","before":"","after":"draft A"}
+{"t_ms":25437986,"event":"draft.received","reqId":"c29b6125-e97a-468f-a417-af66bee1e7d3","content":"draft B #1","currentDraft":"draft A"}
+{"t_ms":25437996,"event":"publish.received","reqId":"571d25d6-e0a2-48da-ad89-a0ed05c212f3","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+{"t_ms":25438287,"event":"draft.committed","reqId":"c29b6125-e97a-468f-a417-af66bee1e7d3","content":"draft B #1","before":"draft A","after":"draft B #1"}
+{"t_ms":25438287,"event":"publish.waitedForDrafts","reqId":"571d25d6-e0a2-48da-ad89-a0ed05c212f3","currentDraftSnapshot":"draft B #1"}
+{"t_ms":25438287,"event":"publish.completed","reqId":"571d25d6-e0a2-48da-ad89-a0ed05c212f3","published":"draft B #1"}
+{"t_ms":25438291,"event":"reset"}
+{"t_ms":25438296,"event":"draft.received","reqId":"3a6bb647-24f8-4c92-a271-c28df4171327","content":"draft A","currentDraft":""}
+{"t_ms":25438597,"event":"draft.committed","reqId":"3a6bb647-24f8-4c92-a271-c28df4171327","content":"draft A","before":"","after":"draft A"}
+{"t_ms":25438601,"event":"draft.received","reqId":"578936b0-8293-46dc-a2d9-e428057363fc","content":"draft B #2","currentDraft":"draft A"}
+{"t_ms":25438611,"event":"publish.received","reqId":"d93f0105-9829-42b5-972b-7e3e54344df1","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+{"t_ms":25438903,"event":"draft.committed","reqId":"578936b0-8293-46dc-a2d9-e428057363fc","content":"draft B #2","before":"draft A","after":"draft B #2"}
+{"t_ms":25438904,"event":"publish.waitedForDrafts","reqId":"d93f0105-9829-42b5-972b-7e3e54344df1","currentDraftSnapshot":"draft B #2"}
+{"t_ms":25438904,"event":"publish.completed","reqId":"d93f0105-9829-42b5-972b-7e3e54344df1","published":"draft B #2"}
+{"t_ms":25438908,"event":"reset"}
+{"t_ms":25438911,"event":"draft.received","reqId":"16fe46fd-1efa-4466-8aa2-959958bf09de","content":"draft A","currentDraft":""}
+{"t_ms":25439211,"event":"draft.committed","reqId":"16fe46fd-1efa-4466-8aa2-959958bf09de","content":"draft A","before":"","after":"draft A"}
+{"t_ms":25439215,"event":"draft.received","reqId":"82525ae9-ff87-4343-8817-8999008c989d","content":"draft B #3","currentDraft":"draft A"}
+{"t_ms":25439225,"event":"publish.received","reqId":"3e046e4b-7a0e-4b16-8319-7718298a791b","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+{"t_ms":25439516,"event":"draft.committed","reqId":"82525ae9-ff87-4343-8817-8999008c989d","content":"draft B #3","before":"draft A","after":"draft B #3"}
+{"t_ms":25439516,"event":"publish.waitedForDrafts","reqId":"3e046e4b-7a0e-4b16-8319-7718298a791b","currentDraftSnapshot":"draft B #3"}
+{"t_ms":25439516,"event":"publish.completed","reqId":"3e046e4b-7a0e-4b16-8319-7718298a791b","published":"draft B #3"}
+{"t_ms":25439519,"event":"reset"}
+{"t_ms":25439523,"event":"draft.received","reqId":"4ea38bcb-b2b4-4627-a08d-fe6f1d7e3dab","content":"draft A","currentDraft":""}
+{"t_ms":25439823,"event":"draft.committed","reqId":"4ea38bcb-b2b4-4627-a08d-fe6f1d7e3dab","content":"draft A","before":"","after":"draft A"}
+{"t_ms":25439827,"event":"draft.received","reqId":"e09d85e6-54fb-464d-949d-091a32a7de55","content":"draft B #4","currentDraft":"draft A"}
+{"t_ms":25439838,"event":"publish.received","reqId":"b52165cd-533d-4c2d-8ed9-96bb5a094586","currentDraftSnapshot":"draft A","pendingDraftCommits":1}
+{"t_ms":25440128,"event":"draft.committed","reqId":"e09d85e6-54fb-464d-949d-091a32a7de55","content":"draft B #4","before":"draft A","after":"draft B #4"}
+{"t_ms":25440128,"event":"publish.waitedForDrafts","reqId":"b52165cd-533d-4c2d-8ed9-96bb5a094586","currentDraftSnapshot":"draft B #4"}
+{"t_ms":25440128,"event":"publish.completed","reqId":"b52165cd-533d-4c2d-8ed9-96bb5a094586","published":"draft B #4"}
